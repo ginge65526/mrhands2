@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://dg4jlykyso1ka"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_hsqtn"]
+[ext_resource type="PackedScene" uid="uid://cgjjh4am5rcda" path="res://player.tscn" id="1_ndxph"]
+[ext_resource type="PackedScene" uid="uid://bqrt50hsknv02" path="res://coin.tscn" id="2_sjj3o"]
+[ext_resource type="PackedScene" uid="uid://csktoypv6k1s8" path="res://tile_map.tscn" id="5_526vj"]
+[ext_resource type="AudioStream" uid="uid://5qtx8jhcf5lj" path="res://exports/The-Rolling-Stones-Sympathy-For-The-Devil.mp3" id="6_n78v4"]
+
+[sub_resource type="GDScript" id="GDScript_r7da8"]
+script/source = "extends Control
+
+var score = 0
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+func update_score(_coin):
+	score += 1
+	$Label.text = \"Score: \" + str(score)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_qfdp6"]
+font_size = 40
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_hsqtn")
+coin_scene = ExtResource("2_sjj3o")
+
+[node name="player" parent="." instance=ExtResource("1_ndxph")]
+position = Vector2(-212, 71)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position_smoothing_enabled = true
+
+[node name="Control" type="Control" parent="player"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -511.0
+offset_top = 213.0
+offset_right = -481.0
+offset_bottom = 236.0
+script = SubResource("GDScript_r7da8")
+
+[node name="Label" type="Label" parent="player/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 3.559
+anchor_bottom = 4.775
+offset_left = -25.0
+offset_top = 30.0
+offset_right = 35.23
+offset_bottom = -21.825
+text = "ammo: 0"
+label_settings = SubResource("LabelSettings_qfdp6")
+
+[node name="coin" parent="." instance=ExtResource("2_sjj3o")]
+z_index = 1
+position = Vector2(246, 342)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="TileMap" parent="." instance=ExtResource("5_526vj")]
+z_index = -1
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_n78v4")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

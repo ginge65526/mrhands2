@@ -1,0 +1,301 @@
+[gd_scene load_steps=17 format=3 uid="uid://d3bp3tvsbhiiu"]
+
+[ext_resource type="Texture2D" uid="uid://da42m7uttbtf6" path="res://Assests/the_tile_map_1.png" id="1_b66ow"]
+[ext_resource type="Script" path="res://PathFollow2D.gd" id="2_riwmq"]
+[ext_resource type="PackedScene" uid="uid://droij4vs2j28m" path="res://enemy.tscn" id="3_t0lbb"]
+[ext_resource type="PackedScene" uid="uid://b7an05put3bd6" path="res://gun.tscn" id="4_7rhn8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fut3a"]
+texture = ExtResource("1_b66ow")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0 = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_ss1ij"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_fut3a")
+
+[sub_resource type="Curve2D" id="Curve2D_ejhhd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 264, -120, 0, 0, 0, 0, 538, -114, 0, 0, 0, 0, 533, 220, 0, 0, 0, 0, 269, 217, 0, 0, 0, 0, 264, -120)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_nfit1"]
+_data = {
+"points": PackedVector2Array(-11.0524, -6.31563, 11.0524, 6.31563, -200, -380, 0, 0, 0, 0, 810, -377, 0, 0, 0, 0, 808, -303, 0, 0, 0, 0, -204, -298, 0, 0, 0, 0, -200, -380)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_4upvn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -186, 589, 0, 0, 0, 0, -180, 438, 0, 0, 0, 0, 455, 440, 0, 0, 0, 0, 455, 595, 0, 0, 0, 0, -203, 605)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_fmqm8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -14, 531, 0, 0, 0, 0, -30, -30, 0, 0, 0, 0, 69, -29, 0, 0, 0, 0, 79, 255, 0, 0, 0, 0, 578, 255, 0, 0, 0, 0, 590, 536, 0, 0, 0, 0, 4, 527)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_v7fjy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 824, 980, 0, 0, 0, 0, 814, 763, 0, 0, 0, 0, 1078, 770, 0, 0, 0, 0, 1072, 548, 0, 0, 0, 0, 812, 544, 0, 0, 0, 0, 779, -187, 0, 0, 0, 0, 829, -181, 0, 0, 0, 0, 849, 513, 0, 0, 0, 0, 1093, 523, 0, 0, 0, 0, 1111, 979, 0, 0, 0, 0, 824, 980)
+}
+point_count = 11
+
+[sub_resource type="Curve2D" id="Curve2D_xrfso"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1251, 101, 0, 0, 0, 0, 1251, 287, 0, 0, 0, 0, 839, 150, 0, 0, 0, 0, 848, 447, 0, 0, 0, 0, 1212, 445, 0, 0, 0, 0, 1212, 588, 0, 0, 0, 0, 776, 581, 0, 0, 0, 0, 771, 273, 0, 0, 0, 0, 1127, 97, 0, 0, 0, 0, 1251, 101)
+}
+point_count = 10
+
+[sub_resource type="Curve2D" id="Curve2D_j3piw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1106, 777, 0, 0, 0, 0, 1110, 590, 0, 0, 0, 0, 1197, 588, 0, 0, 0, 0, 1195, 442, 0, 0, 0, 0, 772, 435, 0, 0, 0, 0, 779, 594, 0, 0, 0, 0, 1082, 592, 0, 0, 0, 0, 1069, 775, 0, 0, 0, 0, 809, 764, 0, 0, 0, 0, 820, 975, 0, 0, 0, 0, 1101, 966, 0, 0, 0, 0, 1106, 777)
+}
+point_count = 12
+
+[sub_resource type="Curve2D" id="Curve2D_as171"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 594, -118, 0, 0, 0, 0, 597, 571, 0, 0, 0, 0, 565, 570, 0, 0, 0, 0, 561, -116, 0, 0, 0, 0, 594, -118)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_yjafn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1239, -211, 0, 0, 0, 0, 1018, -211, 0, 0, 0, 0, 1018, -121, 0, 0, 0, 0, 812, -126, 0, 0, 0, 0, 805, 185, 0, 0, 0, 0, 1163, 192, 0, 0, 0, 0, 1165, 226, 0, 0, 0, 0, 751, 224, 0, 0, 0, 0, 751, -97, 0, 0, 0, 0, 1013, -101, 0, 0, 0, 0, 1020, -29, 0, 0, 0, 0, 1235, -38, 0, 0, 0, 0, 1239, -211)
+}
+point_count = 13
+
+[sub_resource type="Curve2D" id="Curve2D_ff5qo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 570, 239, 0, 0, 0, 0, 5, 235, 0, 0, 0, 0, -1, 279, 0, 0, 0, 0, 570, 273, 0, 0, 0, 0, 570, 239)
+}
+point_count = 5
+
+[node name="lvl2" type="TileMap"]
+tile_set = SubResource("TileSet_ss1ij")
+format = 2
+layer_0/tile_data = PackedInt32Array(65534, 65536, 0, -2, 65536, 1, 65531, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, 65532, 262144, 1, 65533, 262144, 1, 196603, 0, 0, 262139, 0, 0, 327675, 0, 0, 393211, 0, 0, 196604, 262144, 1, 262140, 262144, 1, 327676, 262144, 1, 393212, 0, 0, 196605, 262144, 1, 262141, 262144, 1, 327677, 262144, 1, 393213, 0, 0, 196606, 0, 0, 262142, 0, 0, 327678, 0, 0, 393214, 0, 0, 131067, 0, 0, 131068, 262144, 1, 131069, 262144, 1, 131070, 65536, 0, -65540, 196608, 1, -458756, 196608, 1, -393220, 196608, 1, -327684, 196608, 1, -262148, 196608, 1, -196612, 196608, 1, -131076, 196608, 1, -458755, 196608, 1, -393219, 196608, 1, -327683, 196608, 1, -262147, 196608, 1, -196611, 196608, 1, -131075, 196608, 1, -65539, 196608, 1, -458754, 196608, 1, -393218, 196608, 1, -327682, 196608, 1, -262146, 196608, 1, -196610, 196608, 1, -131074, 196608, 1, -65538, 196608, 1, -458753, 196608, 1, -393217, 196608, 1, -327681, 196608, 1, -262145, 196608, 1, -196609, 196608, 1, -131073, 196608, 1, -65537, 196608, 1, -524288, 196608, 1, -458752, 196608, 1, -393216, 196608, 1, -327680, 196608, 1, -262144, 196608, 1, -196608, 196608, 1, -131072, 196608, 1, -524287, 196608, 1, -458751, 196608, 1, -393215, 196608, 1, -327679, 196608, 1, -262143, 196608, 1, -196607, 196608, 1, -131071, 65536, 0, -524286, 196608, 1, -458750, 196608, 1, -393214, 196608, 1, -327678, 196608, 1, -262142, 196608, 1, -196606, 196608, 1, -131070, 65536, 0, -589828, 196608, 1, -524292, 196608, 1, -589827, 196608, 1, -524291, 196608, 1, -589826, 196608, 1, -524290, 196608, 1, -589825, 196608, 1, -524289, 196608, 1, -655360, 196608, 1, -589824, 196608, 1, -655359, 196608, 1, -589823, 196608, 1, -655358, 196608, 1, -589822, 196608, 1, -65535, 131072, 0, -65534, 131072, 0, 65535, 131072, 0, 0, 131072, 0, 1, 131072, 0, 2, 131072, 0, 131071, 131072, 0, 65536, 131072, 0, 65537, 131072, 0, 65538, 131072, 0, -65533, 131072, 0, 3, 131072, 0, 65539, 131072, 0, -655357, 0, 0, -589821, 0, 0, -524285, 0, 0, -458749, 0, 0, -393213, 0, 0, -327677, 0, 0, -262141, 0, 0, -196605, 0, 0, -131069, 0, 0, -65536, 0, 0, -1, 0, 0, -655365, 0, 0, -589829, 0, 0, -524293, 0, 0, -458757, 0, 0, -393221, 0, 0, -327685, 0, 0, -262149, 0, 0, -196613, 0, 0, -131077, 0, 0, -65541, 0, 0, -655364, 0, 0, -655363, 0, 0, -655362, 0, 0, -655361, 0, 0, -720896, 0, 0, -720893, 0, 0, -720895, 65536, 0, -720894, 65536, 0, -786431, 131072, 0, -851967, 131072, 0, -917503, 131072, 0, -917502, 131072, 0, -917501, 131072, 0, -917500, 131072, 0, -917499, 131072, 0, -917498, 131072, 0, -851962, 131072, 0, -851961, 131072, 0, -786425, 131072, 0, -786426, 131072, 0, -720890, 131072, 0, -720889, 131072, 0, -917497, 131072, 0, -851966, 131072, 0, -851965, 131072, 0, -851964, 131072, 0, -851963, 131072, 0, -786430, 131072, 0, -983039, 131072, 0, -983038, 131072, 0, -983037, 131072, 0, -983036, 131072, 0, -983035, 131072, 0, -983034, 131072, 0, -983033, 131072, 0, -983032, 131072, 0, -917496, 131072, 0, -851960, 131072, 0, -786424, 131072, 0)
+
+[node name="Path1" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_ejhhd")
+
+[node name="PathFollow1" type="PathFollow2D" parent="Path1"]
+position = Vector2(264, -120)
+rotation = 0.0218943
+script = ExtResource("2_riwmq")
+
+[node name="enemy1" parent="Path1/PathFollow1" instance=ExtResource("3_t0lbb")]
+rotation = 1.5708
+
+[node name="Path2" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_nfit1")
+
+[node name="PathFollow2" type="PathFollow2D" parent="Path2"]
+position = Vector2(-200, -380)
+rotation = 0.519145
+script = ExtResource("2_riwmq")
+
+[node name="enemy2" parent="Path2/PathFollow2" instance=ExtResource("3_t0lbb")]
+
+[node name="Path3" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_4upvn")
+
+[node name="PathFollow3" type="PathFollow2D" parent="Path3"]
+position = Vector2(-186, 589)
+rotation = -1.53108
+script = ExtResource("2_riwmq")
+
+[node name="enemy3" parent="Path3/PathFollow3" instance=ExtResource("3_t0lbb")]
+
+[node name="Path4" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_fmqm8")
+
+[node name="PathFollow4" type="PathFollow2D" parent="Path4"]
+position = Vector2(-14, 531)
+rotation = -1.59931
+script = ExtResource("2_riwmq")
+
+[node name="enemy4" parent="Path4/PathFollow4" instance=ExtResource("3_t0lbb")]
+
+[node name="Path5" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_v7fjy")
+
+[node name="PathFollow5" type="PathFollow2D" parent="Path5"]
+position = Vector2(824, 980)
+rotation = -1.61685
+script = ExtResource("2_riwmq")
+
+[node name="enemy5" parent="Path5/PathFollow5" instance=ExtResource("3_t0lbb")]
+
+[node name="Path6" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_xrfso")
+
+[node name="PathFollow6" type="PathFollow2D" parent="Path6"]
+position = Vector2(1251, 101)
+rotation = 1.5708
+script = ExtResource("2_riwmq")
+
+[node name="enemy6" parent="Path6/PathFollow6" instance=ExtResource("3_t0lbb")]
+
+[node name="Path7" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_j3piw")
+
+[node name="PathFollow7" type="PathFollow2D" parent="Path7"]
+position = Vector2(1106, 777)
+rotation = -1.54941
+script = ExtResource("2_riwmq")
+
+[node name="enemy7" parent="Path7/PathFollow7" instance=ExtResource("3_t0lbb")]
+
+[node name="Path8" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_as171")
+
+[node name="PathFollow8" type="PathFollow2D" parent="Path8"]
+position = Vector2(594, -118)
+rotation = 1.56644
+script = ExtResource("2_riwmq")
+
+[node name="enemy8" parent="Path8/PathFollow8" instance=ExtResource("3_t0lbb")]
+
+[node name="Path9" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_yjafn")
+
+[node name="PathFollow9" type="PathFollow2D" parent="Path9"]
+position = Vector2(1239, -211)
+rotation = 3.14159
+script = ExtResource("2_riwmq")
+
+[node name="enemy9" parent="Path9/PathFollow9" instance=ExtResource("3_t0lbb")]
+
+[node name="Path10" type="Path2D" parent="."]
+visible = false
+curve = SubResource("Curve2D_ff5qo")
+
+[node name="PathFollow10" type="PathFollow2D" parent="Path10"]
+position = Vector2(570, 239)
+rotation = -3.13451
+script = ExtResource("2_riwmq")
+
+[node name="enemy10" parent="Path10/PathFollow10" instance=ExtResource("3_t0lbb")]
+
+[node name="gun" parent="." instance=ExtResource("4_7rhn8")]
+visible = false
+position = Vector2(856, 175)
+
+[node name="gun2" parent="." instance=ExtResource("4_7rhn8")]
+visible = false
+position = Vector2(-202, 211)
+
+[node name="gun3" parent="." instance=ExtResource("4_7rhn8")]
+position = Vector2(415, 103)
+
+[connection signal="has_seen" from="Path1/PathFollow1/enemy1" to="Path1/PathFollow1" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path1/PathFollow1/enemy1" to="Path1/PathFollow1" method="_on_enemy_hit"]
+[connection signal="has_seen" from="Path2/PathFollow2/enemy2" to="Path2/PathFollow2" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path2/PathFollow2/enemy2" to="Path2/PathFollow2" method="_on_enemy_hit"]
+[connection signal="has_seen" from="Path3/PathFollow3/enemy3" to="Path3/PathFollow3" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path3/PathFollow3/enemy3" to="Path3/PathFollow3" method="_on_enemy_hit"]
+[connection signal="has_seen" from="Path4/PathFollow4/enemy4" to="Path4/PathFollow4" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path4/PathFollow4/enemy4" to="Path4/PathFollow4" method="_on_enemy_hit"]
+[connection signal="has_seen" from="Path5/PathFollow5/enemy5" to="Path5/PathFollow5" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path5/PathFollow5/enemy5" to="Path5/PathFollow5" method="_on_enemy_hit"]
+[connection signal="has_seen" from="Path6/PathFollow6/enemy6" to="Path6/PathFollow6" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path6/PathFollow6/enemy6" to="Path6/PathFollow6" method="_on_enemy_hit"]
+[connection signal="has_seen" from="Path7/PathFollow7/enemy7" to="Path7/PathFollow7" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path7/PathFollow7/enemy7" to="Path7/PathFollow7" method="_on_enemy_hit"]
+[connection signal="has_seen" from="Path8/PathFollow8/enemy8" to="Path8/PathFollow8" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path8/PathFollow8/enemy8" to="Path8/PathFollow8" method="_on_enemy_hit"]
+[connection signal="has_seen" from="Path9/PathFollow9/enemy9" to="Path9/PathFollow9" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path9/PathFollow9/enemy9" to="Path9/PathFollow9" method="_on_enemy_hit"]
+[connection signal="has_seen" from="Path10/PathFollow10/enemy10" to="Path10/PathFollow10" method="_on_enemy_has_seen"]
+[connection signal="hit" from="Path10/PathFollow10/enemy10" to="Path10/PathFollow10" method="_on_enemy_hit"]

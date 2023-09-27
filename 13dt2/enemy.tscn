@@ -1,0 +1,125 @@
+[gd_scene load_steps=12 format=3 uid="uid://droij4vs2j28m"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_i5rjo"]
+[ext_resource type="PackedScene" uid="uid://diqdljd30g0nh" path="res://enemy_bullet.tscn" id="2_8vhsr"]
+[ext_resource type="Texture2D" uid="uid://inw5rfooleb0" path="res://Assests/thumbnail_DoubleTroubleMrHands.png" id="3_im7fu"]
+[ext_resource type="Texture2D" uid="uid://cqwn7wus3y47h" path="res://Assests/thumbnail_Bothhandedshoot.png" id="4_prafw"]
+[ext_resource type="Texture2D" uid="uid://bul1618567kh5" path="res://Assests/thumbnail_Handsymrhands.png" id="5_n52ir"]
+[ext_resource type="Texture2D" uid="uid://c86veuj4g7npp" path="res://Assests/Fish.png" id="6_f24q6"]
+[ext_resource type="Texture2D" uid="uid://b8xwn4u1s5aao" path="res://Assests/thumbnail_Gunmrhands.png" id="6_h1kaq"]
+[ext_resource type="Texture2D" uid="uid://bdqv5vrtg3rql" path="res://Assests/thumbnail_onehandedshoot.png" id="7_l0n5w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xltgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_im7fu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_prafw")
+}],
+"loop": false,
+"name": &"double gun",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_n52ir")
+}],
+"loop": false,
+"name": &"hands",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_f24q6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h1kaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l0n5w")
+}],
+"loop": false,
+"name": &"single gun",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_blh2e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4s751"]
+radius = 500.0
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_i5rjo")
+enemy_bullet_scene = ExtResource("2_8vhsr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-72, 7, -72, 3, -38, 0, -20, -4, -22, -6, -24, -8, -23, -10, -16, -6, -7, -7, -5, -17, -3, -19, 0, -18, 6, -8, 17, -6, 17, -6, 23, -5, 26, -1, 26, 4, 23, 6, 19, 8, 13, 9, 7, 9, 6, 14, 3, 19, -1, 21, -5, 17, -6, 12, -6, 8, -15, 8, -23, 10, -24, 8, -22, 5, -38, 5, -65, 9)
+metadata/player = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+metadata/player = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-72, 7, -72, 3, -38, 0, -20, -4, -22, -6, -24, -8, -23, -10, -16, -6, -7, -7, -5, -17, -3, -19, 0, -18, 6, -8, 17, -6, 17, -6, 23, -5, 26, -1, 26, 4, 23, 6, 19, 8, 13, 9, 7, 9, 6, 14, 3, 19, -1, 21, -5, 17, -6, 12, -6, 8, -15, 8, -23, 10, -24, 8, -22, 5, -38, 5, -65, 9)
+metadata/player = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_xltgk")
+animation = &"single gun"
+offset = Vector2(0, -90)
+
+[node name="Bullet_Spawn" type="Node2D" parent="AnimatedSprite2D"]
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D/Bullet_Spawn"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Bullet_Spawn/Area2D"]
+shape = SubResource("CircleShape2D_blh2e")
+debug_color = Color(0.803922, 0.168627, 0.407843, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.126
+
+[node name="vision_area" type="Area2D" parent="."]
+
+[node name="vision_collision" type="CollisionShape2D" parent="vision_area"]
+shape = SubResource("CircleShape2D_4s751")
+
+[node name="ray_cast_timer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[node name="vision_ray_cast" type="RayCast2D" parent="."]
+target_position = Vector2(494, 10)
+hit_from_inside = true
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="suspiciuse_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+emitting = false
+amount = 1000
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 40.0
+gravity = Vector2(0, 0)
+angular_velocity_min = 180.0
+angular_velocity_max = 180.0
+color = Color(0.541176, 0.0117647, 0.0117647, 1)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ray_cast_timer" to="." method="_on_ray_cast_timer_timeout"]
+[connection signal="timeout" from="suspiciuse_timer" to="." method="_on_suspiciuse_timer_timeout"]

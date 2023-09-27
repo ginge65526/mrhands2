@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://cgjjh4am5rcda"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_b85d3"]
+[ext_resource type="PackedScene" uid="uid://bbg8uwow483dm" path="res://friendly_bullet.tscn" id="2_1s12m"]
+[ext_resource type="PackedScene" uid="uid://b7an05put3bd6" path="res://gun.tscn" id="2_hqt0k"]
+[ext_resource type="Texture2D" uid="uid://inw5rfooleb0" path="res://Assests/thumbnail_DoubleTroubleMrHands.png" id="3_3bflb"]
+[ext_resource type="Texture2D" uid="uid://dl66mptkk3t45" path="res://Assests/shoot-icon-9.png" id="4_5ecre"]
+[ext_resource type="Texture2D" uid="uid://cqwn7wus3y47h" path="res://Assests/thumbnail_Bothhandedshoot.png" id="4_5tc1t"]
+[ext_resource type="Texture2D" uid="uid://bul1618567kh5" path="res://Assests/thumbnail_Handsymrhands.png" id="5_v3gfy"]
+[ext_resource type="Texture2D" uid="uid://b8xwn4u1s5aao" path="res://Assests/thumbnail_Gunmrhands.png" id="6_tf7df"]
+[ext_resource type="Texture2D" uid="uid://bdqv5vrtg3rql" path="res://Assests/thumbnail_onehandedshoot.png" id="7_lr6n6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eobai"]
+radius = 49.0408
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xltgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3bflb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5tc1t")
+}],
+"loop": false,
+"name": &"double gun",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_v3gfy")
+}],
+"loop": false,
+"name": &"hands",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tf7df")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lr6n6")
+}],
+"loop": false,
+"name": &"single gun",
+"speed": 15.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+z_index = 4
+position = Vector2(2, 1)
+script = ExtResource("1_b85d3")
+gun_scene = ExtResource("2_hqt0k")
+friendly_bullet_scene = ExtResource("2_1s12m")
+
+[node name="Area2D" type="Area2D" parent="."]
+metadata/player = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(21, -1)
+shape = SubResource("CircleShape2D_eobai")
+metadata/is_player = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_xltgk")
+animation = &"single gun"
+offset = Vector2(200, 0)
+
+[node name="Bullet_Spawn" type="Node2D" parent="AnimatedSprite2D"]
+position = Vector2(500, 0)
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(31, -35, 42, -38, 44, -37, 44, -35, 37, -32, 50, -32, 51, -31, 51, -30, 50, -29, 48, -28, 51, -28, 52, -27, 52, -25, 50, -24, 45, -24, 48, -23, 49, -22, 49, -21, 48, -20, 47, -19, 30, -19, 34, -15, 35, -13, 34, -11, 31, -11, 26, -14, 23, -15, 17, -22, 13, -17, 21, -9, 21, 7, 15, 17, 33, 11, 35, 12, 34, 15, 32, 18, 29, 19, 48, 19, 49, 21, 49, 23, 46, 24, 51, 25, 52, 26, 52, 28, 48, 28, 50, 29, 51, 30, 51, 32, 43, 33, 38, 32, 45, 36, 44, 38, 42, 39, 31, 35, 22, 34, 16, 33, 11, 35, 4, 33, 0, 33, -22, 9, -22, -7, -2, -31, 3, -33, 12, -35)
+metadata/is_player = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="recticle" type="Sprite2D" parent="."]
+position = Vector2(100, 0)
+scale = Vector2(0.0783594, 0.0785937)
+texture = ExtResource("4_5ecre")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://spn0v5ewlrs"]
+
+[ext_resource type="Texture2D" uid="uid://dl66mptkk3t45" path="res://assests/shoot-icon-9.png" id="1_ux0hm"]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Shoot-icon-9" type="Sprite2D" parent="."]
+position = Vector2(3, 3)
+scale = Vector2(0.695312, 0.806641)
+texture = ExtResource("1_ux0hm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]

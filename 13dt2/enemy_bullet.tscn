@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://diqdljd30g0nh"]
+
+[ext_resource type="Script" path="res://enemy_bullet.gd" id="1_nlsar"]
+[ext_resource type="Texture2D" uid="uid://0v5vqqsgjqs7" path="res://Assests/bubble.png" id="2_6dsrw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1gx0g"]
+radius = 11.0
+
+[node name="Area2D" type="Area2D"]
+z_index = 1
+disable_mode = 1
+script = ExtResource("1_nlsar")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CircleShape2D_1gx0g")
+
+[node name="BulletTemp" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_6dsrw")
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
