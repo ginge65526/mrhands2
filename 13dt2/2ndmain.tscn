@@ -39,6 +39,7 @@ position = Vector2(-212, 71)
 position_smoothing_enabled = true
 
 [node name="Control" type="Control" parent="player"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -511.0
@@ -48,6 +49,7 @@ offset_bottom = 236.0
 script = SubResource("GDScript_r7da8")
 
 [node name="Label" type="Label" parent="player/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 3.559

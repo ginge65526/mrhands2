@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bgk421xss421g"
+path="res://.godot/imported/I Bet You Look Good On The Dancefloor.mp3-88bcacc0b14fd08772d0ab6acdbd9a7f.mp3str"
+
+[deps]
+
+source_file="res://exports/I Bet You Look Good On The Dancefloor.mp3"
+dest_files=["res://.godot/imported/I Bet You Look Good On The Dancefloor.mp3-88bcacc0b14fd08772d0ab6acdbd9a7f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

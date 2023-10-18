@@ -72,6 +72,9 @@ func _process(delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		mouse_hidden = true
 		
+	if Input.is_action_just_pressed("ui_TAB"):
+		get_tree().change_scene_to_file("res://menu.tscn")
+		
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		
@@ -87,8 +90,8 @@ func _process(delta):
 	position += velocity * delta
 	#position.x = clamp(position.x, 0, screen_size.x)
 	#position.y = clamp(position.y, 0, screen_size.y)
-	$recticle.position.x = clamp($recticle.position.x,($AnimatedSprite2D.position.x -200), ($AnimatedSprite2D.position.x +200))
-	$recticle.position.y = clamp($recticle.position.y,($AnimatedSprite2D.position.y -200), ($AnimatedSprite2D.position.y +200))
+	$recticle.position.x = clamp($recticle.position.x,($AnimatedSprite2D.position.x -900), ($AnimatedSprite2D.position.x +900))
+	$recticle.position.y = clamp($recticle.position.y,($AnimatedSprite2D.position.y -550), ($AnimatedSprite2D.position.y +550))
 	$AnimatedSprite2D.look_at($recticle.global_position)
 	$CollisionPolygon2D.look_at($recticle.global_position)
 	$Area2D.look_at($recticle.global_position)
@@ -98,7 +101,7 @@ func drop():
 	get_set_anim()
 	var new_gun = gun_scene.instantiate()
 	new_gun.position = position
-	print(new_gun)
+	#print(new_gun)
 	add_sibling(new_gun)
 
 func _shoot():

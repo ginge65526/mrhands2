@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg4jlykyso1ka"]
+[gd_scene load_steps=7 format=3 uid="uid://dg4jlykyso1ka"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_hsqtn"]
 [ext_resource type="PackedScene" uid="uid://cgjjh4am5rcda" path="res://player.tscn" id="1_ndxph"]
 [ext_resource type="PackedScene" uid="uid://bqrt50hsknv02" path="res://coin.tscn" id="2_sjj3o"]
 [ext_resource type="PackedScene" uid="uid://csktoypv6k1s8" path="res://tile_map.tscn" id="5_526vj"]
-[ext_resource type="AudioStream" uid="uid://5qtx8jhcf5lj" path="res://exports/The-Rolling-Stones-Sympathy-For-The-Devil.mp3" id="6_n78v4"]
 
 [sub_resource type="GDScript" id="GDScript_r7da8"]
 script/source = "extends Control
@@ -38,6 +37,7 @@ position = Vector2(-212, 71)
 position_smoothing_enabled = true
 
 [node name="Control" type="Control" parent="player"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -511.0
@@ -47,6 +47,7 @@ offset_bottom = 236.0
 script = SubResource("GDScript_r7da8")
 
 [node name="Label" type="Label" parent="player/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 3.559
@@ -70,6 +71,5 @@ autostart = true
 z_index = -1
 
 [node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_n78v4")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

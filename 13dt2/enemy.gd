@@ -10,7 +10,7 @@ var in_range = false
 var gun_dict = {0:"hands", 1:"single gun", 2:"double gun"}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	can_shoot = true
+	can_shoot = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +25,7 @@ func _process(delta):
 func find_and_shoot():
 	look_at(get_node("/root/main/player").global_position)
 	if can_shoot:
-		$Timer.start()
+		#$Timer.start()
 		_shoot()
 		
 	
@@ -46,6 +46,7 @@ func _shoot():
 func _on_area_entered(area):
 	if area.has_meta("friendly_bullet"):
 		hit.emit()
+		get_parent().queue_free()
 		queue_free()
 		
 func _on_timer_timeout():

@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://byquedielryvd"]
+[gd_scene load_steps=7 format=3 uid="uid://byquedielryvd"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_sqjgr"]
 [ext_resource type="PackedScene" uid="uid://bqrt50hsknv02" path="res://coin.tscn" id="2_85qjy"]
-[ext_resource type="PackedScene" uid="uid://b7an05put3bd6" path="res://gun.tscn" id="3_qqilj"]
 [ext_resource type="PackedScene" uid="uid://cgjjh4am5rcda" path="res://player.tscn" id="4_gru8q"]
-[ext_resource type="PackedScene" uid="uid://ddy87amverqy5" path="res://lvl2.tscn" id="5_f1mc4"]
-[ext_resource type="AudioStream" uid="uid://b6onurtjfo7jo" path="res://exports/where-is-my-mind.mp3" id="6_ca7ok"]
+[ext_resource type="PackedScene" uid="uid://d3bp3tvsbhiiu" path="res://lvl4.tscn" id="5_3pj8o"]
 
 [sub_resource type="GDScript" id="GDScript_r7da8"]
 script/source = "extends Control
@@ -32,7 +30,6 @@ font_size = 40
 position = Vector2(0, 1)
 script = ExtResource("1_sqjgr")
 coin_scene = ExtResource("2_85qjy")
-gun_scene = ExtResource("3_qqilj")
 
 [node name="player" parent="." instance=ExtResource("4_gru8q")]
 top_level = true
@@ -42,6 +39,7 @@ position = Vector2(-212, 71)
 position_smoothing_enabled = true
 
 [node name="Control" type="Control" parent="player"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -511.0
@@ -51,6 +49,7 @@ offset_bottom = 236.0
 script = SubResource("GDScript_r7da8")
 
 [node name="Label" type="Label" parent="player/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 3.559
@@ -64,16 +63,15 @@ label_settings = SubResource("LabelSettings_qfdp6")
 
 [node name="coin" parent="." instance=ExtResource("2_85qjy")]
 z_index = 4
-position = Vector2(964, 859)
+position = Vector2(2661, 249)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
-[node name="lvl2" parent="." instance=ExtResource("5_f1mc4")]
-
 [node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ca7ok")
 mix_target = 1
+
+[node name="lvl4" parent="." instance=ExtResource("5_3pj8o")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

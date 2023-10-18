@@ -48,7 +48,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_blh2e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4s751"]
-radius = 500.0
+radius = 770.001
 
 [node name="enemy" type="CharacterBody2D"]
 script = ExtResource("1_i5rjo")
@@ -82,7 +82,6 @@ shape = SubResource("CircleShape2D_blh2e")
 debug_color = Color(0.803922, 0.168627, 0.407843, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.126
 
 [node name="vision_area" type="Area2D" parent="."]
 
@@ -90,11 +89,11 @@ wait_time = 6.126
 shape = SubResource("CircleShape2D_4s751")
 
 [node name="ray_cast_timer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.2
 autostart = true
 
 [node name="vision_ray_cast" type="RayCast2D" parent="."]
-target_position = Vector2(494, 10)
+target_position = Vector2(770, 0)
 hit_from_inside = true
 
 [node name="Node2D" type="Node2D" parent="."]

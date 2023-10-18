@@ -39,7 +39,7 @@ offset_bottom = 299.0
 text = "level 3"
 
 [node name="level_4" type="Button" parent="."]
-visible = false
+top_level = true
 layout_mode = 0
 offset_left = 384.0
 offset_top = 268.0
@@ -119,14 +119,14 @@ offset_right = 456.0
 offset_bottom = 400.0
 text = "level 12"
 
-[node name="level_13" type="Button" parent="."]
-visible = false
+[node name="EXIT" type="Button" parent="."]
+top_level = true
 layout_mode = 0
 offset_left = 267.0
 offset_top = 431.0
 offset_right = 334.0
 offset_bottom = 462.0
-text = "level 13"
+text = "EXIT TO HOME"
 
 [node name="easy_mode" type="CheckButton" parent="."]
 visible = false
@@ -159,7 +159,14 @@ offset_right = 1440.0
 offset_bottom = 960.0
 texture = ExtResource("2_g8uln")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(723, 480)
+zoom = Vector2(1.255, 1.255)
+
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="level_1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="level_2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="level_3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="level_4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="EXIT" to="." method="_on_exit_pressed"]
 [connection signal="toggled" from="music" to="." method="_on_music_toggled"]

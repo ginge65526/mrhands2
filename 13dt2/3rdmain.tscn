@@ -39,6 +39,7 @@ position = Vector2(-212, 71)
 position_smoothing_enabled = true
 
 [node name="Control" type="Control" parent="player"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -511.0
@@ -48,6 +49,7 @@ offset_bottom = 236.0
 script = SubResource("GDScript_r7da8")
 
 [node name="Label" type="Label" parent="player/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 3.559
@@ -61,7 +63,7 @@ label_settings = SubResource("LabelSettings_qfdp6")
 
 [node name="coin" parent="." instance=ExtResource("2_s66wm")]
 z_index = 4
-position = Vector2(-208, -118)
+position = Vector2(95, -145)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
