@@ -1,5 +1,4 @@
 extends Node
-
 var music = true
 
 var music_dict = {
@@ -13,16 +12,11 @@ var music_dict = {
 		"res://exports/Beach House - Myth.mp3",
 	}
 
-
 func _process(_delta):
 	if music:
 		var level = get_tree().current_scene.scene_file_path
-		#print(level)
 		if level in music_dict:
 			var song = load(music_dict[level])
 			if song != $AudioStreamPlayer.stream:
 				$AudioStreamPlayer.stream = song
 				$AudioStreamPlayer.play()
-				#print(music_dict["main"])
-			#$AudioStreamPlayer.set_stream(music_dict[level])
-			#$AudioStreamPlayer.play()
